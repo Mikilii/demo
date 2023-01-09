@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>湖北·十堰_登录界面</title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			background: url("images/图片1.jpg") no-repeat center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.box {
+
+			width: 300px;
+			height: 300px;
+			margin: 200px auto;
+			text-align: center;
+		}
+
+		.text {
+			display: block;
+			width: 300px;
+			height: 30px;
+			line-height: 30px;
+			margin: 10px auto;
+			font-size: 16px;
+			font-weight: 300;
+			padding: 10px;
+			border: 0;
+			outline: 1px solid #ccc;
+			border-radius: 7px;
+			box-sizing: border-box;
+
+		}
+
+		.password {
+			position: relative;
+		}
+
+		.visual {
+			height: 30px;
+			position: absolute;
+			left: 750px;
+			bottom: 305px;
+		}
+
+		.yanzhengma {
+			width: 200px;
+			float: right;
+		}
+
+		.button_div {
+			width: 300px;
+			margin-top: 20px;
+		}
+
+		.button {
+			width: 40%;
+			height: 30px;
+			border: none;
+			border-radius: 10px;
+			margin-top: 20px;
+			font-size: 18px;
+		}
+
+		.button:hover {
+			background-color: #ccc;
+		}
+
+		.login {
+			margin-left: 10px;
+			float: left;
+		}
+
+		.reset {
+			margin-right: 10px;
+			float: right;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<input type="text" placeholder="请输入账号" class="text id">
+			<input type="password" placeholder="请输入密码" class="text password">
+			<span class="yz" style="margin-top: 12px; display: inline-block;"></span><input type="text"
+				placeholder="请输入验证码" class="text yanzhengma">
+			<img src="./images/close.png" alt="" class="visual">
+			<div class="button_div">
+				<input type="button" value="登&nbsp;录" class="button login">
+				<input type="reset" value="重&nbsp;置" class="button reset">
+
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<p>还没有账号？去<a href="./logon.html">注册账号</a>吧</p>
+		</div>
+
+		<script>
+			var visual = document.querySelector(".visual")
+			var password = document.querySelector(".password")
+			flag = 0
+			visual.onclick = function() {
+				if (flag === 0) {
+					password.type = "text"
+					visual.src = 'images/open.png'
+					flag = 1
+				} else {
+					password.type = "password"
+					visual.src = 'images/close.png'
+					flag = 0
+				}
+			}
+
+			var yz = document.querySelector(".yz")
+			var yanzhengma = document.querySelector(".yanzhengma")
+			for (var i = 0; i < 6; i++) {
+				yz.innerHTML += Math.floor(Math.random() * 10)
+			}
+
+			var login = document.querySelector(".login")
+			login.onclick = function() {
+				if (yanzhengma.value == yz.innerHTML) {
+					window.location.href = "index.html"
+				} else {
+					alert("验证码有误")
+				}
+			}
+
+			var reset = document.querySelector(".reset")
+			reset.onclick = function() {
+				location.reload()
+			}
+		</script>
+	</body>
+</html>
